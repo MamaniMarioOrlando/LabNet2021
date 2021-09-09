@@ -24,7 +24,7 @@ namespace TrabajoPractico1
         private static void ArmandoDotacionesDeTransportes(List<TransportePublico> vehiculos)
         {
             Console.Write("\t\t*Solo se agregan 10 transportes\n\n");
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < 10; i++)
             {
                 Console.Write("Que Transporte desea creaar? Taxi presione (T), Omnibus presione (O): ");
                 Char caracter = Convert.ToChar(Console.ReadLine());
