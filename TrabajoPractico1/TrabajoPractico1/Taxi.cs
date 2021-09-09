@@ -6,7 +6,17 @@ using System.Threading.Tasks;
 
 namespace TrabajoPractico1
 {
-    class Taxi
+    public class Taxi : TransportePublico
     {
+        public Taxi(int pasajeros) : base(pasajeros) { }
+        public override void avanzar()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void detenerse()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
