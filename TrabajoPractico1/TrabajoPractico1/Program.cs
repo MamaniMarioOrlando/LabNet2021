@@ -5,47 +5,59 @@ namespace TrabajoPractico1
 {
     class Program
     {
-        List<TransportePublico> vehiculos;
         static void Main(string[] args)
         {
+            List<TransportePublico> vehiculos = new List<TransportePublico>();
             Titulo();
-            MostrarCantidadDePasajeros(ArmandoDotacionesDeTransportes());
+            ArmandoDotacionesDeTransportes(vehiculos);
+            MostrarCantidadDePasajeros(vehiculos);
             Console.WriteLine();
         }
 
         private static void Titulo()
         {
-            Console.WriteLine("***********Transporte Publico***********\n\n");
+            Console.WriteLine("************************************************************************\n" +
+                "*************************Transporte Publico*****************************\n"
+                + "************************************************************************\n");
         }
 
-
-
-        public static List<TransportePublico> ArmandoDotacionesDeTransportes()
+        private static void ArmandoDotacionesDeTransportes(List<TransportePublico> vehiculos)
         {
-            List<TransportePublico> vehiculos = new List<TransportePublico>();
+            Console.Write("\t\t*Solo se agregan 10 transportes\n\n");
             for (int i = 0; i < 4; i++)
             {
-                Console.WriteLine("que Transporte desea creaar Taxi presione T o Omnibus presione O: ");
-                Char palabra = Convert.ToChar(Console.ReadLine());
-                if (palabra == 'T')
+                Console.Write("Que Transporte desea creaar? Taxi presione (T), Omnibus presione (O): ");
+                Char caracter = Convert.ToChar(Console.ReadLine());
+                while (!ValidandoCaracter(caracter))
                 {
-                    Console.WriteLine("ingrese la cantidad de pasajeros: ");
+                    Console.Write("ErrorDeCaracterInvalido. Que Transporte desea creaar? Taxi presione (T), Omnibus presione (O): ");
+                    caracter = Convert.ToChar(Console.ReadLine());
+                }
+                if (caracter == 'T')
+                {
+                    Console.Write("ingrese la cantidad de 1 a 4 pasajeros: ");
                     int cantidadPasajeros = Convert.ToInt32(Console.ReadLine());
+                    while (!ValidandoCantidaDePasajerosDelTaxi(cantidadPasajeros))
+                    {
+                        Console.Write("ERROR ingrese una cantidad de 1 a 4 pasajeros: ");
+                        cantidadPasajeros = Convert.ToInt32(Console.ReadLine());
+                    }
                     TransportePublico transporte = new Taxi(cantidadPasajeros);
                     vehiculos.Add(transporte);
-
                 }
-                if (palabra == 'O')
+                if (caracter == 'O')
                 {
-                    Console.WriteLine("ingrese la cantidad de pasajeros: ");
+                    Console.Write("ingrese la cantidad de pasajeros: ");
                     int cantidadPasajeros = Convert.ToInt32(Console.ReadLine());
+                    while (!ValidandoCantidaDePasajerosDelOmnibus(cantidadPasajeros))
+                    {
+                        Console.Write("ERROR ingrese una cantidad de 1 a 100 pasajeros: ");
+                        cantidadPasajeros = Convert.ToInt32(Console.ReadLine());
+                    }
                     TransportePublico transporte = new Omnibus(cantidadPasajeros);
                     vehiculos.Add(transporte);
                 }
             }
-
-
-            return vehiculos;
         }
         private static void MostrarCantidadDePasajeros(List<TransportePublico> vehiculos)
         {
@@ -53,17 +65,47 @@ namespace TrabajoPractico1
             int contadorOmnibus = 1;
             Console.WriteLine();
             Console.WriteLine();
-            foreach (TransportePublico item in vehiculos)
+
+            Console.WriteLine("****************************Detalle*************************************\n");
+            foreach (TransportePublico transporte in vehiculos)
             {
-                if (item.GetType().Name == "Omnibus")
+                if (transporte.GetType().Name == "Omnibus")
                 {
-                    Console.WriteLine("{0} {1}: {2} pasajeros", item.GetType().Name, contadorOmnibus++, item.Pasajeros);
-                }
-                if (item.GetType().Name == "Taxi")
-                {
-                    Console.WriteLine("{0} {1}: {2} pasajeros", item.GetType().Name, contadorTaxi++, item.Pasajeros);
+                    Console.WriteLine("{0} {1}: {2} pasajeros", transporte.GetType().Name, contadorOmnibus++, transporte.Pasajeros);
                 }
             }
+            Console.WriteLine();
+            foreach (TransportePublico transporte in vehiculos)
+            {
+                if (transporte.GetType().Name == "Taxi")
+                {
+                    Console.WriteLine("{0} {1}: {2} pasajeros", transporte.GetType().Name, contadorTaxi++, transporte.Pasajeros);
+                }
+            }
+        }
+        public static bool ValidandoCantidaDePasajerosDelTaxi(int valor)
+        {
+            if (valor > 0 && valor <= 4)
+            {
+                return true;
+            }
+            return false;
+        }
+        public static bool ValidandoCantidaDePasajerosDelOmnibus(int valor)
+        {
+            if (valor > 0 && valor <= 100)
+            {
+                return true;
+            }
+            return false;
+        }
+        public static bool ValidandoCaracter(int caracter)
+        {
+            if (caracter == 'T' || caracter == 'O')
+            {
+                return true;
+            }
+            return false;
         }
 
     }

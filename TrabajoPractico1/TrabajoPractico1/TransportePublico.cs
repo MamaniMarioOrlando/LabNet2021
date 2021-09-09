@@ -20,11 +20,6 @@ namespace TrabajoPractico1
             set
             {
                 pasajeros = value;
-                if (pasajeros < 0)
-                {
-                    throw new Exception("no se puede ingresar numeros negativos");
-                }
-
             }
         }
 
