@@ -6,7 +6,10 @@ namespace TrabajoPractico2
     {
         static void Main(string[] args)
         {
-            ExcepcionDeDivision.PedirUnValor();
+            /*Primer Metodo*/
+            Helper.PedirUnValor();
+            /*Segundo Metodo*/
+            Helper.PedirDosValores();
 
             Console.WriteLine();
         }
