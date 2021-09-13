@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TrabajoPractico2.Exceptions
 {
-    class FormatoIncorrectoExcepcion : Exception
+    public class FormatoIncorrectoExcepcion : Exception
     {
         public FormatoIncorrectoExcepcion(string message) : base("Seguro Ingreso una letra o no ingreso nada!")
         {

@@ -7,7 +7,7 @@ using TrabajoPractico2.Exceptions;
 
 namespace TrabajoPractico2
 {
-    class Logic
+    public class Logic
     {
         public int Division(int dividendo, int divisor)
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TrabajoPractico2.Exceptions
 {
-    class DivisionPorCeroExcepcion : Exception
+    public class DivisionPorCeroExcepcion : Exception
     {
         public DivisionPorCeroExcepcion(string message) : base("Solo Chuck Norris divide por cero!")
         {
