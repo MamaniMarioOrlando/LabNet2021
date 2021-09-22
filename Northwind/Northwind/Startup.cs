@@ -32,8 +32,8 @@ namespace Northwind
                 c.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "Aquarium Service",
-                    Description = "API para el manejo de acuarios",
+                    Title = "Northwind Service",
+                    Description = "API para el manejo de Northwind",
                 });
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
