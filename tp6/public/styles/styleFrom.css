@@ -1,0 +1,89 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+.div-form{
+    border: solid;
+    border-radius: 3%;
+    background-color: #27A39D;
+    font-style: italic;
+}
+
+.form-control {
+    width: 48%;
+}
+.formEdad{
+    width: 28%;
+}
+
+.infoPersonal{
+    margin: 12px;
+    border: solid;
+    padding-left: 21px;
+}
+
+.titulobox{
+    z-index: 2;
+    position: relative;
+    top: -15px;
+    background-color: #27A39D;
+    width: 47%;
+    margin: 0px;
+}
+
+.container{
+    margin: 29%;
+}
+
+.form-label {
+    margin-bottom: -0.5rem;
+}
+
+.infoAdicional{
+    margin: 12px;
+    border: solid;
+    padding-left: 21px;
+}
+
+.btn{
+    margin-left: 10px;
+    background-color: #2784A3;
+    border-color: #2784A3;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #0B405C;
+    border-color: #0B405C;
+}
+
+.form-check-input:checked {
+    background-color: #2784A3;
+    border-color: #2784A3;
+}
+
+.btnDelete{
+    margin-left: 211px;
+}
+.btn-primary:focus {
+    color: #fff;
+    background-color: #2784A3;
+    border-color: #2784A3;
+    box-shadow: 0 0 0 .25rem rgba(49,132,253,.5);
+}
+
+
+form .error {
+
+    color: #ff0000;
+    display: none;
+  
+  }
+
+form .erroruno {
+    color: #ff0000;
+    display: none;
+  
+  }

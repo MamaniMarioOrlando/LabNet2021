@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="public/styles/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/styles/styleFrom.css">
+    <script type="text/javascript" src="public/jquery/jquery-3.6.0.min.js"></script>
+
+  </head>
+  <body>
+    
+    <div class="container">
+        <div class="col-5">
+            <div class="div-form">
+                <form id="formulario">
+                    <div class="infoPersonal">
+                        <div class="titulobox">Información Personal: </div>
+                        <div class="mb-3">
+                            <label for="nombre" class="form-label">Nombre:</label>
+                            <input type="text" class="form-control" id="nombre" placeholder="Diego">
+                            <span id="mensaje1" class="error">ingrese nombre valido</span>
+                          </div>
+                          <div class="mb-3">
+                            <label for="apellido" class="form-label">Apellido:</label>
+                            <input type="text" class="form-control" id="apellido" placeholder="Rojas">
+                            <span id="mensaje2" class="error">ingrese apellido valido</span>
+                          </div>
+                          <div class="mb-3">
+                            <label for="edad" class="form-label">Edad:</label>
+                            <input type="number" class="form-control formEdad" id="edad">
+                          </div>
+                          <div class="contChek">
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                                <label class="form-check-label" for="exampleRadios1">
+                                  Masculino
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option1">
+                                <label class="form-check-label" for="exampleRadios2">
+                                  Femenino
+                                </label>
+                              </div>
+                              <div class="form-check">
+                                <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios3" value="option1">
+                                <label class="form-check-label" for="exampleRadios3">
+                                  Otro
+                                </label>
+                              </div>
+                          </div>
+                    </div>
+                    <div class="infoAdicional">
+                      <div class="titulobox">Información Adicional: </div>
+                      <div class="mb-3">
+                        <label for="empresa" class="form-label">Empresa</label>
+                        <input type="text" class="form-control" id="empresa" placeholder="Edesur">
+                        <span id="mensaje2" class="error">ingrese nombre de la empresa</span>
+                      </div>
+                    </div>
+                    <button type="submit" id="enviar" class="btn btn-primary">Enviar</button>
+                    <button type="button" id="eliminar" class="btn btn-primary btnDelete">Eliminar</button>
+                  </form>
+            </div>
+        </div>
+    </div>
+    <script>
+      $("#eliminar").click(function(event) {
+         $("#formulario")[0].reset();
+         $('.error').hide();
+     });
+   </script>
+   <script>
+     $(document).ready(()=>{
+        $('.error').hide();
+        $('#formulario').submit(function(event){
+          let nombre = $('#nombre').val().trim();
+          let apellido = $('#apellido').val().trim();
+          let empresa = $("#empresa").val().trim();
+          if(nombre.length<3 || apellido.length<3 || empresa<2){
+            $('.error').show();
+            event.preventDefault();
+            return false;
+            
+          }
+          
+        });
+     });
+   </script>
+   
+   <script src="public/js/bootstrap.min.js"></script>
+  </body>
+</html>
