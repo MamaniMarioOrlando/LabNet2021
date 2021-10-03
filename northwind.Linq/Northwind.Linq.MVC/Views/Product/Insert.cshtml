@@ -1,0 +1,20 @@
+﻿@model Northwind.Linq.MVC.Models.ProductView
+
+@{
+    ViewBag.Title = "Products";
+}
+
+<h1>Agrege el producto</h1>
+<br />
+
+@using (Html.BeginForm("Insert", "Product", FormMethod.Post))
+{
+
+    <div class="form-group">
+        <label for="nameProduct">Nombre del Producto</label>
+        
+        @Html.TextBoxFor(r => r.ProductName)
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enviar</button>
+}

@@ -1,0 +1,32 @@
+﻿@model List<Northwind.Linq.MVC.Models.ProductView>
+
+@{
+    ViewBag.Title = "Products";
+}
+
+
+<h4 style="margin:10px;">
+    @ViewBag.Mensaje
+</h4>
+<table class="table table-dark">
+    <thead>
+        <tr>
+            <th scope="col">Id_Producto</th>
+            <th scope="col">Nombre Producto</th>
+            <th Scope="col">Accion</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        @foreach (var product in Model)
+        {
+            <tr>
+                <th scope="row">@product.IdProducto</th>
+                <td>@product.ProductName</td>
+                <td style="font-weight:600">
+                    @Html.ActionLink("Borrar", "Delete", new { id = product.IdProducto }) &raquo;
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
