@@ -61,12 +61,26 @@ namespace northwind.Linq.Logic
             }
         }
 
+        public Products GetByID(int id)
+        {
+            try
+            { 
+                return context.Products.Find(id);
+            }
+            catch (Exception e)
+            {
+
+                throw new Exception(e.Message);
+            }
+        }
+
         public void UpDate(Products newElem)
         {
             try
             {
                 var productUpdate = context.Products.Find(newElem.ProductID);
                 productUpdate.ProductName = newElem.ProductName;
+
                 context.SaveChanges();
             }
             catch (Exception e)

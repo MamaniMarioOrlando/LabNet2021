@@ -10,6 +10,8 @@ namespace northwind.Linq.Logic
     {
          List<T> GetAll();
 
+        T GetByID(int id);
+
         void Add(T newElem);
         void Delet(int elem);
         void UpDate(T newElem);

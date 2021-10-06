@@ -57,7 +57,7 @@ namespace Northwind.Linq.MVC.Controllers
             {
                 return View(e.Message);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return RedirectToAction("Index", "ErrorView");
             }

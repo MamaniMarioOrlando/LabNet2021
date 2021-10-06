@@ -57,6 +57,11 @@ namespace northwind.Linq.Logic
             }
         }
 
+        public Customers GetByID(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public void UpDate(Customers newElem)
         {
             try

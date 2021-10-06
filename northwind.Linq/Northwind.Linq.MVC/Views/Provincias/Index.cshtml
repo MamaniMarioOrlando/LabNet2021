@@ -1,0 +1,24 @@
+﻿@model Northwind.Linq.MVC.Models.Example
+@{
+    ViewBag.Title = "Index de provincias";
+}
+
+<h2>Api de Provincias</h2>
+
+<table class="table table-hover">
+    <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Latitud Centroide</th>
+        <th>Centroide ion</th>
+    </tr>
+    @foreach (var provincia in Model.provincias)
+    {
+        <tr>
+            <td>@provincia.id</td>
+            <td>@provincia.nombre</td>
+            <td>@provincia.centroide.lat</td>
+            <td>@provincia.centroide.lon</td>
+        </tr>
+    }
+</table>
