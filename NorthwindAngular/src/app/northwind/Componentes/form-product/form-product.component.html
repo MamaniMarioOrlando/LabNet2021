@@ -1,0 +1,94 @@
+<div class="container">
+    <button class="btn btn-info" (click)="openModal('CreateProduct')" style="float: right;">Agregar Producto</button>
+    <div class="table-responsive">
+        <div id="userTable" *ngIf="products">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Cantidad</th>
+                        <th style="text-align: center;">Edit</th>
+                        <th style="text-align: center;">Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let product of products">
+                        <td>{{ product.NameProduct }}</td>
+                        <td>{{ product.CantidadPorUnidad }}</td>
+                        <td style="text-align: center;">
+                            <button class="btn btn-primary" (click)="openModal('EditProduct', product)">Editar</button>
+                        </td>
+                        <td style="text-align: center;">
+                            <button class="btn btn-danger" (click)="confirmDelete(product);">Eliminar</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <jw-modal id="CreateProduct">
+        <h1 style="text-align: center;">Crear producto</h1>
+        <form id="userAdd" [formGroup]="formProduct">
+            <div class="form-group mt-2">
+                <label for="nameProduct" class="exampleInput1">Nombre</label>
+                <input type="text" formControlName="nameProduct" class="form-control" id="nameProduct">
+                <div *ngIf="f.nameProduct.touched && f.nameProduct.errors" class="invalid-feedback">
+                    <div *ngIf="f.nameProduct.errors.required">Nombrerequerido</div>
+                    <div *ngIf="f.nameProduct.errors.maxlingth">El maximo es 40 caracteres</div>
+                </div>
+            </div>
+            <div class="form-group mt-2">
+                <label for="cantidadPorUnidad" class="exampleInput1">CantidadPorUnidad</label>
+                <input type="text" formControlName="cantidadPorUnidad" class="form-control" id="cantidadPorUnidad">
+                <div *ngIf="f.cantidadPorUnidad.touched && f.cantidadPorUnidad.errors" class="invalid-feedback">
+                    <div *ngIf="f.cantidadPorUnidad.errors.required">Nombrerequerido</div>
+                    <div *ngIf="f.cantidadPorUnidad.errors.maxlingth">El maximo es 40 caracteres</div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-2">
+                    <button class="btn btn-primary" style="float: left;" (click)="guardarProducto()">Guardar</button>
+                </div>
+                <div class="col-8"></div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-danger" style="float: right;"
+                        (click)="closeModal('CreateProduct');">Cancelar</button>
+                </div>
+            </div>
+        </form>
+    </jw-modal>
+
+    <jw-modal id="EditProduct">
+        <h1 style="text-align: center;">Editar producto</h1>
+        <form id="userAdd" [formGroup]="formProduct">
+            <div class="form-group mt-2">
+                <label for="nameProduct" class="exampleInput1">Nombre</label>
+                <input type="text" formControlName="nameProduct" class="form-control" id="nameProduct">
+                <div *ngIf="f.nameProduct.touched && f.nameProduct.errors" class="invalid-feedback">
+                    <div *ngIf="f.nameProduct.errors.required">Nombrerequerido</div>
+                    <div *ngIf="f.nameProduct.errors.maxlingth">El maximo es 40 caracteres</div>
+                </div>
+            </div>
+            <div class="form-group mt-2">
+                <label for="cantidadPorUnidad" class="exampleInput1">CantidadPorUnidad</label>
+                <input type="text" formControlName="cantidadPorUnidad" class="form-control" id="cantidadPorUnidad">
+                <div *ngIf="f.cantidadPorUnidad.touched && f.cantidadPorUnidad.errors" class="invalid-feedback">
+                    <div *ngIf="f.cantidadPorUnidad.errors.required">Nombrerequerido</div>
+                    <div *ngIf="f.cantidadPorUnidad.errors.maxlingth">El maximo es 40 caracteres</div>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-2">
+                    <button class="btn btn-primary" style="float: left;"
+                        (click)="modificarProducto()">Modificar</button>
+                </div>
+                <div class="col-8"></div>
+                <div class="col-2">
+                    <button type="button" class="btn btn-danger" style="float: right;"
+                        (click)="closeModal('EditProduct');">Cancelar</button>
+                </div>
+            </div>
+        </form>
+    </jw-modal>
+</div>
