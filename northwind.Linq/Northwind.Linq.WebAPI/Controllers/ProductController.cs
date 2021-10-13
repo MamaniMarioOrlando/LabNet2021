@@ -4,8 +4,6 @@ using Northwind.Linq.WebAPI.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 
 namespace Northwind.Linq.WebAPI.Controllers
@@ -27,6 +25,7 @@ namespace Northwind.Linq.WebAPI.Controllers
                     NameProduct = x.ProductName,
                     CantidadPorUnidad = x.QuantityPerUnit,
                 }).ToList();
+
                 return Ok(reponseProducts);
             }
             catch (Exception)
@@ -64,11 +63,16 @@ namespace Northwind.Linq.WebAPI.Controllers
 
         // POST: api/Product
         [HttpPost]
-        public IHttpActionResult Post([FromBody]RequestModel requestProduct)
+        public IHttpActionResult Post([FromBody] RequestModel requestProduct)
         {
             try
             {
-                return Created("~api/product",requestProduct);
+                Products producto = new Products();
+                producto.ProductName = requestProduct.NameProduct;
+                producto.QuantityPerUnit = requestProduct.CantidadPorUnidad;
+                productLogic.Add(producto);
+
+                return Ok(producto);
             }
             catch (Exception)
             {
@@ -84,7 +88,7 @@ namespace Northwind.Linq.WebAPI.Controllers
             try
             {
                 var producto = productLogic.GetByID(id);
-                if (producto == null) 
+                if (producto == null)
                 {
                     return NotFound();
                 }
@@ -109,7 +113,7 @@ namespace Northwind.Linq.WebAPI.Controllers
                 var producto = productLogic.GetByID(id);
                 productLogic.Delet(id);
                 return Ok(producto);
-                }
+            }
             catch (Exception)
             {
 
