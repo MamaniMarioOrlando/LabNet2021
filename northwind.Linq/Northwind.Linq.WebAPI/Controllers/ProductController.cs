@@ -5,9 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Northwind.Linq.WebAPI.Controllers
 {
+    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
     public class ProductController : ApiController
     {
         LogicProduct productLogic = new LogicProduct();
@@ -22,6 +24,7 @@ namespace Northwind.Linq.WebAPI.Controllers
                 IEnumerable<ResponseModel> reponseProducts = products.Select(x =>
                 new ResponseModel()
                 {
+                    Id = x.ProductID,
                     NameProduct = x.ProductName,
                     CantidadPorUnidad = x.QuantityPerUnit,
                 }).ToList();
@@ -83,11 +86,11 @@ namespace Northwind.Linq.WebAPI.Controllers
 
         // PUT: api/Product/5
         [HttpPut]
-        public IHttpActionResult Put(int id, [FromBody] RequestModel productRequest)
+        public IHttpActionResult Put([FromBody] RequestModel productRequest)
         {
             try
             {
-                var producto = productLogic.GetByID(id);
+                var producto = productLogic.GetByID(productRequest.Id);
                 if (producto == null)
                 {
                     return NotFound();
@@ -95,6 +98,7 @@ namespace Northwind.Linq.WebAPI.Controllers
                 producto.ProductName = productRequest.NameProduct;
                 producto.QuantityPerUnit = productRequest.CantidadPorUnidad;
                 productLogic.UpDate(producto);
+
                 return Ok(productRequest);
             }
             catch (Exception)
@@ -112,6 +116,7 @@ namespace Northwind.Linq.WebAPI.Controllers
             {
                 var producto = productLogic.GetByID(id);
                 productLogic.Delet(id);
+
                 return Ok(producto);
             }
             catch (Exception)
@@ -119,7 +124,6 @@ namespace Northwind.Linq.WebAPI.Controllers
 
                 return InternalServerError();
             }
-
         }
     }
 }
