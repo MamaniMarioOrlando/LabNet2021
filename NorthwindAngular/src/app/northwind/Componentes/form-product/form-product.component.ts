@@ -61,7 +61,6 @@ export class FormProductComponent implements OnInit {
     this.productService.upDateProduct(this.product)
       .subscribe(
         (res: any) => {
-          debugger
           if (res != undefined && res != null) {
             this.obtenerProductos();
             this.closeModal(this.modeSave);
