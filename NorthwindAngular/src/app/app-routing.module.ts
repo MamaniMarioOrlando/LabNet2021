@@ -4,7 +4,7 @@ import { FormProductComponent } from './northwind/Componentes/form-product/form-
 
 const routes: Routes = [
   {
-    path : 'producto',
+    path : '',
     component : FormProductComponent
   }
 ];

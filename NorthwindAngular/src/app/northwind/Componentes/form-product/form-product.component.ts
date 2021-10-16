@@ -48,7 +48,7 @@ export class FormProductComponent implements OnInit {
             this.closeModal(this.modeSave);
           }
           else {
-            console.log('Se rompió todo.');
+            alert('Se rompió todo.');
           }
         }
       );
@@ -67,7 +67,7 @@ export class FormProductComponent implements OnInit {
             this.closeModal(this.modeSave);
           }
           else {
-            console.log('Se rompió todo.');
+            alert('Se rompió todo.');
           }
         }
       )
@@ -123,7 +123,6 @@ export class FormProductComponent implements OnInit {
   }
 
   confirmDelete(product: any): void {
-    debugger
     swal.fire({
       title: '¡Atención!',
       text: "¿Está seguro de eliminar a " + product.NameProduct + "?",
